@@ -1,0 +1,187 @@
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">google.load("jquery", "1.3.2");</script>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
+      rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="./resources/style.css" media="screen"/>
+
+<html lang="en">
+<head>
+  	<title>This is my paper title</title>
+      <!-- Facebook automatically scrapes this. Go to https://developers.facebook.com/tools/debug/
+          if you update and want to force Facebook to re-scrape. -->
+  	<meta property="og:image" content="Path to my teaser.jpg"/>
+  	<meta property="og:title" content="Creative and Descriptive Paper Title." />
+  	<meta property="og:description" content="Paper description." />
+    <!-- Twitter automatically scrapes this. Go to https://cards-dev.twitter.com/validator?
+        if you update and want to force Twitter to re-scrape. -->
+    <meta property="twitter:card"          content="summary" />
+    <meta property="twitter:title"         content="Creative and Descriptive Paper Title." />
+    <meta property="twitter:description"   content="Paper description." />
+    <meta property="twitter:image"         content="Path to my teaser.jpg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Add your Google Analytics tag here -->
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=UA-97476543-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'UA-97476543-1');
+    </script>
+
+</head>
+
+<body>
+<div class="container">
+    <div class="title">
+      Slim Scissors: Segmenting Thin Object from <br> Synthetic Background
+    </div>
+
+    <div class="venue">
+      In ECCV 2022
+    </div>
+
+    <br><br>
+
+    <div class="author">
+        Kunyang Han<sup>1,2</sup>
+    </div>
+    <div class="author">
+        <a href="https://scholar.google.com.sg/citations?user=8gm-CYYAAAAJ&hl=en">Jun Hao Liew</a><sup>3</sup>
+    </div>
+    <div class="author">
+        <a href="https://scholar.google.com/citations?user=Q8iay0gAAAAJ&hl=en">Jiashi Feng</a><sup>3</sup>
+    </div>
+    <div class="author">
+        <a href="https://scholar.google.com/citations?hl=en&user=H6l2ohcAAAAJ&view_op=list_works&sortby=pubdate">Huawei Tian</a><sup>4</sup>
+    </div>
+    <div class="author">
+        <a href="https://scholar.google.com/citations?user=474TbQYAAAAJ&hl=en">Yao Zhao</a><sup>1,2</sup>
+    </div>
+    <div class="author">
+        <a href="https://weiyc.github.io/">Yunchao Wei</a><sup>1,2</sup>
+    </div>
+
+    <br><br>
+
+    <div class="affiliation"><sup>1&nbsp;</sup>Institute of Information Science, <br> Beijing Jiaotong University</div>
+    <div class="affiliation"><sup>2&nbsp;</sup>Beijing Key Laboratory of Advanced Information Science and Network Technology</div>
+    <div class="affiliation"><sup>3&nbsp;</sup>ByteDance</div>
+    <div class="affiliation"><sup>4&nbsp;</sup>People's Public Security University of China</div>
+
+    <br><br>
+
+    <div class="links"><a href="">[Paper]</a></div>
+    <!-- <div class="links"><a href="">[Video]</a></div> -->
+    <div class="links"><a href="https://github.com/KunyangHan/SlimScissors">[Code]</a></div>
+
+    <br><br>
+
+    <img style="width: 80%;" src="./resources/pipeline.png" alt="Teaser figure."/>
+    <br> 
+    <p style="width: 80%; margin-top: 20px;">
+        Our Slim Scissors enables quick extraction of elongated thin parts by simply brushing some coarse scribbles.
+    </p>
+
+    <br><br>
+    <hr>
+
+    <h1>Abstract</h1>
+    <p style="width: 80%;">
+      Despite the great progress made by existing deep learning-based interactive segmentation algorithms 
+      where only a few clicks are sufficient to segment an object, 
+      these methods typically fail when segmenting objects with elongated thin structures 
+      (e.g., bicycle spokes), requiring extensive user inputs for correction. 
+      Recent effort reveals that the failure can be attributed to poor training data quality 
+      and class imbalance between thin and non-thin regions, and contributes a new synthetic dataset 
+      and a three-stream network design. Nevertheless, we observe that this work suffers from two limitations: 
+      1) large performance gap when tested on real image domain; 
+      2) extensive amounts of user interactions (clicks) are still needed to perform refinement 
+      if the thin structures are not well segmented. To address this, we develop Slim Scissors, 
+      which enables quick extraction of elongated thin parts by simply brushing some coarse scribbles. 
+      At the core of our approach is the novel idea of segmenting thin parts 
+      by learning to compare the original image to a synthetic background whose thin structures are absent. 
+      To this end, given coarsely drawn scribbles, we construct a synthetic background without the thin parts 
+      and train a thin object segmentation network based on such (image, background) pair. 
+      We show that such a design is model-agnostic and can be easily incorporated into 
+      existing state-of-the-art interactive segmentation network to enable an end-to-end trainable segmentation framework. 
+      To reduce the annotation burden, we further devise a similarity detection module, 
+      which enables the model to automatically synthesize background for other similar thin structures 
+      when given only one or two scribbles. We perform extensive experiments on 
+      COIFT, HRSOD, and ThinObject-5K. In particular, our Slim Scissors outperforms TOS-Net 
+      by 5.9% IoU_thin and 3.5% F score on the real dataset HRSOD, 
+      well demonstrating the superiority of our solution in extracting thin objects. 
+    </p>
+
+    <br><br>
+    <hr>
+
+    <h1>Video</h1>
+    <p style="width: 80%;">
+      Demos are coming.
+    </p>
+    <!-- <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameBorder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+    </div> -->
+
+    <br><br>
+    <hr>
+
+    <h1>Method Overview</h1>
+    <img style="width: 80%;" src="./resources/arch.png"
+         alt="Method overview figure"/>
+    <br>
+    <a class="links" href="https://github.com/KunyangHan/SlimScissors">[Code]</a>
+
+    <br><br>
+    <hr>
+
+    <!-- <h1>Results</h1>
+    <img style="width: 80%;" src="./resources/results.jpg"
+         alt="Results figure"/>
+
+    <br><br>
+    <hr> -->
+
+    <h1>Paper</h1>
+    <div class="paper-thumbnail">
+        <a href="https://arxiv.org">
+            <img class="layered-paper-big" width="100%" src="./resources/paper_.png" alt="Paper thumbnail"/>
+        </a>
+    </div>
+    <div class="paper-info">
+        <h3>Slim Scissors: Segmenting Thin Object from Synthetic Background</h3>
+        <p>Kunyang Han, Jun Hao Liew, Jiashi Feng, Huawei Tian, Yao Zhao, and Yunchao Wei</p>
+        <p>In ECCV 2022.</p>
+        <pre>
+          <code>
+@InProceedings{han2022slim,
+  title = {Slim Scissors: Segmenting Thin Object from Synthetic Background},
+  author = {Han, Kunyang and Liew, Jun Hao and Feng, Jiashi and Tian, Huawei and Zhao, Yao and Wei, Yunchao},
+  booktitle = {eccv},
+  year = {2022},
+}
+          </code>
+        </pre>
+    </div>
+
+    <br><br>
+    <hr>
+
+    <h1>Acknowledgements</h1>
+    <p style="width: 80%;">
+        This template was originally made by <a href="http://web.mit.edu/phillipi/">Phillip Isola</a> and <a href="http://richzhang.github.io/">Richard Zhang</a> for a <a href="http://richzhang.github.io/colorization/">colorful project</a>, and inherits the modifications made by <a href="https://github.com/jasonyzhang/webpage-template">Jason Zhang</a>.
+        The code can be found <a href="https://github.com/elliottwu/webpage-template">here</a>.
+    </p>
+
+    <br><br>
+</div>
+
+</body>
+
+</html>
