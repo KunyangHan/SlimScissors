@@ -91,29 +91,19 @@
 
     <h1>Abstract</h1>
     <p style="width: 80%;">
-      Despite the great progress made by existing deep learning-based interactive segmentation algorithms 
-      where only a few clicks are sufficient to segment an object, 
-      these methods typically fail when segmenting objects with elongated thin structures 
-      (e.g., bicycle spokes), requiring extensive user inputs for correction. 
-      Recent effort reveals that the failure can be attributed to poor training data quality 
-      and class imbalance between thin and non-thin regions, and contributes a new synthetic dataset 
-      and a three-stream network design. Nevertheless, we observe that this work suffers from two limitations: 
-      1) large performance gap when tested on real image domain; 
-      2) extensive amounts of user interactions (clicks) are still needed to perform refinement 
-      if the thin structures are not well segmented. To address this, we develop Slim Scissors, 
-      which enables quick extraction of elongated thin parts by simply brushing some coarse scribbles. 
-      At the core of our approach is the novel idea of segmenting thin parts 
-      by learning to compare the original image to a synthetic background whose thin structures are absent. 
-      To this end, given coarsely drawn scribbles, we construct a synthetic background without the thin parts 
-      and train a thin object segmentation network based on such (image, background) pair. 
-      We show that such a design is model-agnostic and can be easily incorporated into 
-      existing state-of-the-art interactive segmentation network to enable an end-to-end trainable segmentation framework. 
-      To reduce the annotation burden, we further devise a similarity detection module, 
+      Existing interactive segmentation algorithms typically fail when segmenting objects with elongated thin structures 
+      (bicycle spokes). Though some recent efforts attempt to address this challenge by introducing a new synthetic dataset 
+      and a three-stream network design, they suffer two limitations: 1) large performance gap when tested on real image domain; 
+      2) still requiring extensive amounts of user interactions (clicks) if the thin structures are not well segmented. 
+      To solve them, we develop Slim Scissors, which enables quick extraction of elongated thin parts 
+      by simply brushing some coarse scribbles. Our core idea is to segment thin parts by learning 
+      to compare the original image to a synthesized background without thin structures. 
+      Our method is model-agnostic and seamlessly applicable to existing state-of-the-art interactive segmentation models. 
+      To further reduce the annotation burden, we devise a similarity detection module, 
       which enables the model to automatically synthesize background for other similar thin structures 
-      when given only one or two scribbles. We perform extensive experiments on 
-      COIFT, HRSOD, and ThinObject-5K. In particular, our Slim Scissors outperforms TOS-Net 
-      by 5.9% IoU_thin and 3.5% F score on the real dataset HRSOD, 
-      well demonstrating the superiority of our solution in extracting thin objects. 
+      from only one or two scribbles. Extensive experiments on COIFT, HRSOD and ThinObject-5K 
+      clearly demonstrate the superiority of Slim Scissors for thin object segmentation: 
+      it outperforms TOS-Net by 5.9% IoU_thin and 3.5% F score on the real dataset HRSOD.
     </p>
 
     <br><br>
