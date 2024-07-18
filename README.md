@@ -66,7 +66,6 @@ python train.py --data_root path_to_data_folder
 ```
 
 ## Testing
-Download checkpoint by [Google Drive](https://drive.google.com/file/d/1U8LY5aSxPhzOPReg1jWxaXXG1gC1AotI/view?usp=sharing).
 
 To evaluate, simply run following commands:
 ```.bash
